@@ -10,9 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_31_112926) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_07_215120) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "companies", force: :cascade do |t|
+    t.string "store_name", limit: 200, null: false
+    t.string "city", limit: 60, null: false
+    t.string "state", limit: 2, null: false
+    t.string "local_address", limit: 255, null: false
+    t.string "phone", limit: 30, null: false
+    t.string "email", limit: 60, null: false
+    t.string "cnpj"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deleted_at"], name: "index_companies_on_deleted_at"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -29,5 +43,4 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_31_112926) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-
 end
