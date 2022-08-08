@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'registrations' }
 
-  resources :client
+  resources :company
 
   namespace :api do
     namespace :v1 do
