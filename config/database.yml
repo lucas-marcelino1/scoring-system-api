@@ -17,8 +17,8 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: SET_YOUR_USERNAME
-  password: SET_YOUR_PASSWORD
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
   
 
   # For details on connection pooling, see Rails configuration guide
@@ -86,5 +86,3 @@ test:
 production:
   <<: *default
   database: scoring_system_api_production
-  username: scoring_system_api
-  password: <%= ENV["SCORING_SYSTEM_API_DATABASE_PASSWORD"] %>
